@@ -35,8 +35,8 @@
     (lambda () (rinari-launch)))
 
 ;;egg動かすやつ
-(when (executable-find "git")
-  (require 'egg nil t))
+;;(when (executable-find "git")
+;;  (require 'egg nil t))
 
 
 ;;ヘッダファイルのメジャーモードをc++に変更。置く場所要検討
@@ -115,6 +115,11 @@
 ;;phpのメジャーモードを実現
 (el-get 'sync '(php-mode-improved))
 (add-to-list 'auto-mode-alist '("\\.php$" . php-mode))
+
+;;git管理に必要なmagit
+(el-get 'sync '(magit))
+(when (executable-find "git")
+      (require 'magit nil t))
 
 
 
