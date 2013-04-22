@@ -34,9 +34,6 @@
 (add-hook 'rhtml-mode-hook
     (lambda () (rinari-launch)))
 
-;;egg動かすやつ
-;;(when (executable-find "git")
-;;  (require 'egg nil t))
 
 
 ;;ヘッダファイルのメジャーモードをc++に変更。置く場所要検討
