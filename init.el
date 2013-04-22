@@ -172,4 +172,3 @@
         (make-directory dir t)))))
 
 
-;;otameshi
