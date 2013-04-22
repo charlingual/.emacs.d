@@ -171,3 +171,5 @@
       (unless (file-exists-p dir)
         (make-directory dir t)))))
 
+
+;;otameshi
