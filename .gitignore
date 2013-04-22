@@ -1,1 +1,10 @@
 /el-get
+auto-save-hist
+ac-comphist.dat
+tramp
+history
+\#loadpath.el#
+%backup%~
+.DS_Store
+auto-save-list/
+init.el~
