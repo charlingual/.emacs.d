@@ -158,6 +158,10 @@
 ;(desktop-save-mode 1)
 
 
+;;バッファを自動再読み込み
+(global-auto-revert-mode 1)
+
+
 ;;既定のブラウザをchromeに
 (setq browse-url-browser-function 'browse-url-generic browse-url-generic-program "google-chrome")
 
