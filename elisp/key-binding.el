@@ -1,9 +1,8 @@
-
 ;;macのキーバインドを実現
 ;(require 'mac-key-mode)
 ;(mac-key-mode 1)
 
-;;optionをメタキーに
+;;;optionをメタキーに
 (setq mac-option-modifier 'meta)
 
 ;;コントロールキーをemacsの方に渡す
@@ -32,3 +31,7 @@
 
 ;;undo
 (define-key global-map (kbd "s-z") 'undo)
+
+
+;;c-hを削除に
+(global-set-key "\C-h" 'delete-backward-char)

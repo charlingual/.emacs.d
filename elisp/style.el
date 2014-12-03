@@ -22,7 +22,7 @@
     ;)
   )
 
-
+(set-default-coding-systems 'utf-8)
 (set-language-environment 'Japanese)
 (prefer-coding-system 'utf-8)
 ;; クリップボードの文字コード
@@ -58,7 +58,7 @@
 (tool-bar-mode -1)
 
 ;;透明度の設定
-(add-to-list 'default-frame-alist '(alpha .(90 90)))
+(add-to-list 'default-frame-alist '(alpha .(100 100)))
 
 
 

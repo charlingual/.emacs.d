@@ -8,3 +8,4 @@ history
 .DS_Store
 auto-save-list/
 init.el~
+elpa

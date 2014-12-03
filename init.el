@@ -14,8 +14,8 @@
 ;;具体的なパスの場所
 (add-to-load-path "elisp" "site-lisp")
 ;;読み込みファイル一覧
-(load "flymake-init")
-(load "flymake-cursor")
+;;(load "flymake-init")
+;;(load "flymake-cursor")
 (load "scroll")
 (load "style")
 (load "hiding")
@@ -23,6 +23,19 @@
 (load "yatex-init")
 (load "shell-toggle-init")
 ;;(load "tabbar-init")
+
+;;flycheckを有効に
+(add-hook 'after-init-hook #'global-flycheck-mode)
+(add-hook 'python-mode-hook 'flycheck-mode)
+
+
+;;markdown用
+(autoload 'markdown-mode "markdown-mode.el" "Major mode for editing Markdown files" t)
+(setq auto-mode-alist (cons '("\\.md" . markdown-mode) auto-mode-alist))
+(setq markdown-css-path
+      "/Users/yasu/.emacs.d/elisp/markdown-mode-2.0/css/github.css")
+
+
 
 ;;rails用
 (require 'rinari)
@@ -77,14 +90,13 @@
 
 
 ;;自動補完モード
-(require 'auto-complete)
-(require 'auto-complete-config)
-
 ;(define-key ac-complete-mode-map "\C-n" 'ac-next)
 ;(define-key ac-complete-mode-map "\C-p" 'ac-previous)
 
 
 (el-get 'sync '(auto-complete-clang))
+(require 'auto-complete)
+(require 'auto-complete-config)
 (require 'auto-complete-clang)
 (global-auto-complete-mode t)
 (setq ac-auto-start t)
@@ -92,6 +104,9 @@
           (lambda ()
          (define-key ac-completing-map (kbd "C-n") 'ac-next)
           (define-key ac-completing-map (kbd "C-p") 'ac-previous)))
+
+(el-get 'sync '(go-mode))
+
 
 
 ;;htmlの入力補助？動かしてない
@@ -163,7 +178,10 @@
 
 
 ;;既定のブラウザをchromeに
-(setq browse-url-browser-function 'browse-url-generic browse-url-generic-program "google-chrome")
+(setq browse-url-browser-function 'browse-url-generic)
+(setq browse-url-generic-program
+(if (file-exists-p "/usr/bin/open")
+"/usr/bin/open"))
 
 
 
