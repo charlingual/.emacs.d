@@ -14,7 +14,7 @@
 ;;具体的なパスの場所
 (add-to-load-path "elisp" "site-lisp")
 ;;読み込みファイル一覧
-;;(load "flymake-init")
+;;(load "flmake-init")
 ;;(load "flymake-cursor")
 (load "scroll")
 (load "style")
@@ -25,16 +25,27 @@
 ;;(load "tabbar-init")
 
 ;;flycheckを有効に
+(setq-default flycheck-clang-language-standard "c++11")
+(setq flycheck-clang-include-path
+      (list (expand-file-name "~/usr/include")))
 (add-hook 'after-init-hook #'global-flycheck-mode)
 (add-hook 'python-mode-hook 'flycheck-mode)
+
+;;置換した時に大文字小文字をそのままにする
+(setq case-replace nil)
 
 
 ;;markdown用
 (autoload 'markdown-mode "markdown-mode.el" "Major mode for editing Markdown files" t)
 (setq auto-mode-alist (cons '("\\.md" . markdown-mode) auto-mode-alist))
 (setq markdown-css-path
-      "/Users/yasu/.emacs.d/elisp/markdown-mode-2.0/css/github.css")
+      "/Users/yau/.emacs.d/elisp/markdown-mode-2.0/css/github.css")
 
+
+;;SPARQL mode
+(autoload 'sparql-mode "sparql-mode.el"
+    "Major mode for editing SPARQL files" t)
+(add-to-list 'auto-mode-alist '("\\.sparql$" . sparql-mode))
 
 
 ;;rails用
@@ -56,6 +67,19 @@
 ;;何かスペルミスを指摘してくれるらしい
 (setq-default flyspell-mode t)
 (setq ispell-dictionary "american")
+
+
+;;aspellの設定,ispellと入れ替え
+(setq-default ispell-program-name "aspell")
+(eval-after-load "ispell"
+  '(add-to-list 'ispell-skip-region-alist '("[^\000-\377]+")))
+(mapc
+ (lambda (hook)
+   (add-hook hook
+             '(lambda () (flyspell-mode 1))))
+ '(
+   yatex-mode-hook
+   ))
 
 ;;デフォのvcモードとかいうやつをoffに
 (setq vc-handled-backends ())
